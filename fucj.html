@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>India Space Lab: Internship Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f3f4f6;
+            color: #111827;
+        }
+
+        /* Print-specific styles */
+        @media print {
+            body {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+            }
+
+            main {
+                box-shadow: none !important;
+                margin: 0 !important;
+                max-width: 100% !important;
+                border: none !important;
+            }
+
+            .bg-gray-50 {
+                background-color: #f3f4f6 !important;
+                border: 1px solid #d1d5db !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            a {
+                color: inherit !important;
+                text-decoration: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto bg-white p-8 sm:p-12 shadow-sm my-8 sm:my-12 border border-gray-200">
+
+        <!-- Section: Title Page -->
+        <section id="home" class="text-center py-12">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-800">Internship Report</h1>
+            <p class="mt-4 text-gray-600">A report on the India Space Lab Summer 2025 program.</p>
+            <div class="mt-10 space-y-1">
+                <p class="text-md text-gray-600">By:</p>
+                <p class="text-lg font-semibold text-gray-800">PATEL SRUSHTI JIGNESHKUMAR</p>
+                <p class="text-sm text-gray-700">Student ID: ISL-11002642</p>
+                <p class="text-sm text-gray-700">Sakalchand University</p>
+            </div>
+        </section>
+
+        <!-- Section: Table of Contents -->
+        <section id="toc" class="py-8 my-8 border-t border-b border-gray-200">
+            <h2 class="text-xl font-bold text-gray-800 mb-4">Contents</h2>
+            <ul class="space-y-2">
+                <li><a href="#introduction" class="text-blue-600 hover:underline">1. Introduction</a></li>
+                <li><a href="#module-1" class="text-blue-600 hover:underline">2. Module 1: Drones</a></li>
+                <li><a href="#module-2" class="text-blue-600 hover:underline">3. Module 2: CanSats</a></li>
+                <li><a href="#module-3" class="text-blue-600 hover:underline">4. Module 3: Rockets</a></li>
+                <li><a href="#module-4" class="text-blue-600 hover:underline">5. Module 4: GIS</a></li>
+                <li><a href="#module-5" class="text-blue-600 hover:underline">6. Module 5: Space Industry</a></li>
+                <li><a href="#conclusion" class="text-blue-600 hover:underline">7. Conclusion</a></li>
+            </ul>
+        </section>
+
+        <!-- Section: Introduction -->
+        <section id="introduction" class="py-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">1. Introduction</h2>
+            <p class="text-gray-700 mb-6">This report is about my internship at India Space Lab. It was a program to
+                learn about the "New Space" industry and bridge the gap between classroom theory and practical
+                application. The purpose of this document is to summarize what I learned in each part of the program. We
+                learned about different topics, starting with the basics and then moving to harder things. The program
+                had a few parts which are described below.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                <div class="bg-gray-100 p-4 rounded">
+                    <p class="text-2xl font-bold">5</p>
+                    <p class="text-gray-600">Modules</p>
+                </div>
+                <div class="bg-gray-100 p-4 rounded">
+                    <p class="text-2xl font-bold">3</p>
+                    <p class="text-gray-600">Workshops</p>
+                </div>
+                <div class="bg-gray-100 p-4 rounded">
+                    <p class="text-2xl font-bold">1</p>
+                    <p class="text-gray-600">Project</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="my-10">
+
+        <!-- Section: Module 1 -->
+        <section id="module-1" class="py-8">
+            <h2 class="text-2xl font-bold text-gray-800">2. Module 1: Drones</h2>
+            <p class="mt-2 text-gray-700 mb-6">We learned about Unmanned Aerial Vehicles (UAVs), how to build them, and
+                how they fly by themselves. This module was very hands-on and provided a good foundation for the rest of
+                the internship.</p>
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Building a Drone</h3>
+                    <p class="text-gray-700 mb-2">We started by building a quadcopter from a kit. This helped us see how
+                        all the parts work together and why each component is important. It was a good lesson in
+                        mechanical assembly and electronics.</p>
+                    <ul class="space-y-1 list-disc list-inside text-gray-700">
+                        <li>Put together the carbon fiber frame and mounted the brushless DC motors, making sure
+                            everything was balanced to reduce vibration.</li>
+                        <li>Wired up the electronics, including the Electronic Speed Controllers (ESCs), the Power
+                            Distribution Board (PDB), and the flight controller.</li>
+                        <li>Learned about battery safety and proper handling procedures for high-discharge LiPo
+                            batteries.</li>
+                        <li>Used a computer with ground control software to set up the drone's firmware and calibrate
+                            the Inertial Measurement Unit (IMU) and compass.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">How Drones Fly Autonomously</h3>
+                    <p class="text-gray-700 mb-2">We also learned about the software side of drones. It was important to
+                        test the code in a simulator before trying it on the real drone to ensure it would be safe.</p>
+                    <ul class="space-y-1 list-disc list-inside text-gray-700">
+                        <li>Learned how drones use sensors like GPS and IMU to know where they are, and how sensor
+                            fusion algorithms combine this data.</li>
+                        <li>Studied how PID controllers are tuned to keep the drone stable in the air, preventing it
+                            from wobbling or overshooting its target.</li>
+                        <li>Looked at how drones can follow a path on a map using a series of GPS waypoints, which are
+                            sent using protocols like MAVLink.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <hr class="my-10">
+
+        <!-- Section: Module 2 -->
+        <section id="module-2" class="py-8">
+            <h2 class="text-2xl font-bold text-gray-800">3. Module 2: CanSats</h2>
+            <p class="mt-2 text-gray-700 mb-6">This module was about building a small satellite that fits in a can. We
+                did this as a team project, which meant we had to work together, manage our time, and solve problems to
+                get it done.</p>
+            <div class="bg-gray-50 p-6 rounded-lg">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Project KIRAN</h3>
+                <p class="text-gray-700 mb-4">Our team had to build a CanSat to measure background radiation with a
+                    Geiger counter. The idea was to see if we could detect changes in radiation as it fell from a
+                    height, simulating a probe entering an area with high radiation, like near a solar storm.</p>
+                <div>
+                    <h4 class="font-semibold text-gray-800 mb-2">Project Info</h4>
+                    <ul class="space-y-2 text-gray-700 list-disc list-inside">
+                        <li><strong>Goal:</strong> Measure radiation (counts per minute) and send the data to a computer
+                            on the ground in real-time.</li>
+                        <li><strong>My Job:</strong> I worked on the Geiger counter payload. This meant I had to get the
+                            sensor working, manage its high-voltage power supply, and connect it to the main computer.
+                        </li>
+                        <li><strong>Problem:</strong> The radio signals from the transmitter were creating
+                            electromagnetic interference (EMI) that was messing up the very sensitive sensor readings,
+                            giving us false high counts of radiation.</li>
+                        <li><strong>Solution:</strong> We first tried to solve it with software, but it wasn't enough.
+                            So, we wrapped the sensor in some copper foil to act as a simple shield, which blocks some
+                            of the radio waves. I also changed the code to pause the sensor readings for the few
+                            milliseconds when the radio was transmitting. This combination fixed the problem and our
+                            data became much cleaner and more reliable.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <hr class="my-10">
+
+        <!-- Section: Module 3 -->
+        <section id="module-3" class="py-8">
+            <h2 class="text-2xl font-bold text-gray-800">4. Module 3: Rockets</h2>
+            <p class="mt-2 text-gray-700 mb-6">This part was about the basics of how rockets work to get to space. We
+                covered the main ideas of propulsion and flight dynamics.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Rocket Science Basics</h3>
+                    <ul class="space-y-1 list-disc list-inside text-gray-700">
+                        <li>Learned about the main rocket equation (Tsiolkovsky rocket equation) and what it means for
+                            fuel, understanding that a rocket's mass is mostly fuel.</li>
+                        <li>Compared solid and liquid fuel rockets and their pros and cons, like how solid rockets are
+                            simple but liquid rockets are more efficient.</li>
+                        <li>Studied how to make rockets fly straight using fins by ensuring the center of pressure is
+                            behind the center of gravity.</li>
+                        <li>Talked about why large rockets need multiple stages to get to orbit, dropping empty fuel
+                            tanks to save weight.</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-100 p-4 rounded">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Model Rocket Workshop</h3>
+                    <p class="text-gray-700">We built and launched a small model rocket. It was a good way to see the
+                        science in action. Before the launch, we used simulation software like OpenRocket to predict how
+                        high it would go and to make sure it would be stable. We had to follow a checklist to make sure
+                        the launch was safe. The rocket went up and the parachute came out for a safe recovery, so it
+                        was a success.</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="my-10">
+
+        <!-- Section: Module 4 -->
+        <section id="module-4" class="py-8">
+            <h2 class="text-2xl font-bold text-gray-800">5. Module 4: GIS</h2>
+            <p class="mt-2 text-gray-700 mb-6">Here, we learned how to use satellite images and GIS software to study
+                the Earth. GIS stands for Geographic Information System and it's a powerful tool for analyzing
+                location-based data.</p>
+            <div class="bg-gray-50 p-6 rounded-lg">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Case Study: Wildfire Risk</h3>
+                <p class="text-gray-700 mb-4">We used QGIS software to look at wildfire risk in a forest area in the
+                    Himalayas. The goal was to find the most dangerous areas based on a few factors that we could
+                    measure from satellite images.</p>
+                <div>
+                    <h4 class="font-semibold text-gray-800 mb-2">Steps</h4>
+                    <ul class="space-y-1 text-gray-700 list-disc list-inside">
+                        <li>Used NDVI (Normalized Difference Vegetation Index) to see how many plants and trees were in
+                            an area, which acts as the fuel for a fire.</li>
+                        <li>Used NDMI (Normalized Difference Moisture Index) to see how dry the plants were, as drier
+                            plants burn more easily.</li>
+                        <li>Looked at the slope of the land using a digital elevation model (DEM), because fires spread
+                            faster uphill.</li>
+                        <li>We combined these data layers in QGIS to create a final risk map with high, medium, and low
+                            risk zones.</li>
+                        <li><strong>Result:</strong> We made a map showing where fires were most likely to happen, which
+                            could be useful for forest managers to plan fire prevention efforts.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <hr class="my-10">
+
+        <!-- Section: Module 5 -->
+        <section id="module-5" class="py-8">
+            <h2 class="text-2xl font-bold text-gray-800">6. Module 5: Space Industry</h2>
+            <p class="mt-2 text-gray-700 mb-6">This module was about the business side of space and jobs in the
+                industry. It helped connect our technical skills to the real world and showed us what careers are
+                possible.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">India's Space Startups</h3>
+                    <p class="text-gray-700">We talked about how private companies are getting more involved in space in
+                        India, working with ISRO. We learned about the role of IN-SPACe, a government agency created to
+                        help and promote private space companies. This is a big change for the country's space program
+                        and is creating new opportunities for startups.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Jobs in Space</h3>
+                    <p class="text-gray-700">We learned that there are many different jobs in the space industry, not
+                        just for aerospace engineers. People are also needed in areas like data science to analyze
+                        satellite images, robotics for rovers and manufacturing, and even law, finance, and marketing
+                        for space companies.</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="my-10">
+
+        <!-- Section: Conclusion -->
+        <section id="conclusion" class="py-8">
+            <h2 class="text-2xl font-bold text-gray-800">7. Conclusion</h2>
+            <p class="mt-2 text-gray-700 mb-4">In conclusion, the internship was a good experience. I learned many
+                skills that will be useful later. It covered a lot of different topics and gave a good overview of the
+                space industry, from building hardware to analyzing data and understanding the business side.</p>
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">Skills I Learned</h3>
+            <ul class="list-disc list-inside space-y-1 text-gray-700">
+                <li>Practical skills like building and programming drones and small satellites.</li>
+                <li>How to work on a project with a team to meet a deadline and combine different parts.</li>
+                <li>How to solve technical problems when things go wrong, like the sensor interference issue.</li>
+                <li>Using different kinds of software like QGIS for data analysis and rocket simulators for design.</li>
+            </ul>
+            <p class="text-gray-700 mt-4">This internship has helped me decide that I want to work in the space
+                industry. It showed me how exciting the field is and what kind of work is involved. I am thankful to
+                India Space Lab for the opportunity.</p>
+        </section>
+
+    </main>
+
+</body>
+
+</html>
