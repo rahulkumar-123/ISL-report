@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>India Space Lab: Summer Internship Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Slate and Amber -->
+    <!-- Application Structure Plan: A linear, document-style single-page layout that mimics a formal report. The structure uses a main container to create a "page" feel. Navigation is handled by a hyperlinked table of contents at the beginning. This structure is chosen for its readability, print-friendliness, and formal tone, converting the SPA into a classic document format. -->
+    <!-- Visualization & Content Choices: The report is primarily textual. Visualizations are conceptual to aid understanding. Goal: Organize -> Method: HTML/CSS diagrams (e.g., project lifecycle) for structure. Goal: Compare -> Method: Side-by-side card layouts (e.g., GIS maps). Goal: Inform -> Method: Conceptual Chart.js bar charts to represent relationships (e.g., CanSat subsystem focus, GIS data correlation). This avoids a text-heavy layout and makes key takeaways more impactful. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9;
+            /* slate-100 */
+            color: #1e293b;
+            /* slate-800 */
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+
+        .toc-link {
+            transition: color 0.2s ease-in-out;
+        }
+
+        .toc-link:hover {
+            color: #c2410c;
+            /* orange-600 */
+        }
+
+        /* Print-specific styles */
+        @media print {
+            body {
+                background-color: #ffffff;
+                font-size: 11pt;
+            }
+
+            main {
+                box-shadow: none !important;
+                margin: 0 !important;
+                max-width: 100% !important;
+                border: none;
+            }
+
+            .print-section {
+                break-before: page;
+            }
+
+            #home,
+            #toc {
+                break-before: avoid-page;
+            }
+
+            .bg-slate-50 {
+                background-color: #f8fafc !important;
+                /* Lighter gray for print */
+                -webkit-print-color-adjust: exact;
+                /* Ensures background colors print in Chrome */
+                print-color-adjust: exact;
+                /* Standard property */
+            }
+
+            .chart-container {
+                height: 250px !important;
+                /* Fixed height for print */
+            }
+
+            a {
+                color: inherit !important;
+                text-decoration: none !important;
+            }
+
+            .toc-link {
+                color: #1e293b !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto bg-white p-8 sm:p-12 md:p-16 shadow-lg my-8 sm:my-12 rounded-lg">
+
+        <!-- Section: Title Page -->
+        <section id="home" class="text-center py-16">
+            <span class="text-base font-semibold text-orange-600 tracking-wider">INDIA SPACE LAB</span>
+            <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mt-4">Summer Internship Project Report</h1>
+            <p class="mt-6 text-lg text-slate-600">A comprehensive summary of the key learnings, projects, and hands-on
+                experiences from the Summer 2025 program.</p>
+            <div class="mt-12 space-y-2">
+                <p class="text-md text-slate-500">Submitted by:</p>
+                <p class="text-xl font-semibold text-slate-800">Rahul Kumar</p>
+                <p class="text-md font-medium text-slate-700">Student ID: ISL-11003396</p>
+                <p class="text-md font-medium text-slate-700">College: NIT Patna</p>
+            </div>
+        </section>
+
+        <!-- Section: Table of Contents -->
+        <section id="toc" class="py-10 border-t border-b border-slate-200 my-10 print-section">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6">Table of Contents</h2>
+            <ul class="space-y-3">
+                <li><a href="#introduction" class="toc-link text-slate-700 font-medium">1. Introduction</a></li>
+                <li><a href="#module-1" class="toc-link text-slate-700 font-medium">2. Module 1: Advanced Drone
+                        Technology</a></li>
+                <li><a href="#module-2" class="toc-link text-slate-700 font-medium">3. Module 2: CanSat & CubeSat
+                        Development</a></li>
+                <li><a href="#module-3" class="toc-link text-slate-700 font-medium">4. Module 3: Rocketry and Launch
+                        Vehicle Dynamics</a></li>
+                <li><a href="#module-4" class="toc-link text-slate-700 font-medium">5. Module 4: Remote Sensing & GIS
+                        Applications</a></li>
+                <li><a href="#module-5" class="toc-link text-slate-700 font-medium">6. Module 5: The New Space Economy &
+                        Entrepreneurship</a></li>
+                <li><a href="#conclusion" class="toc-link text-slate-700 font-medium">7. Conclusion & Future
+                        Aspirations</a></li>
+            </ul>
+        </section>
+
+        <!-- Section: Introduction -->
+        <section id="introduction" class="py-10 print-section">
+            <h2 class="text-3xl font-bold text-slate-900 mb-2">1. Introduction</h2>
+            <p class="text-slate-600 mb-8">This report details the comprehensive journey undertaken during the India
+                Space Lab internship, a program meticulously designed to bridge the critical gap between academic theory
+                and real-world application in the burgeoning "New Space" sector. The program was structured to provide a
+                holistic learning experience, starting with foundational aerospace concepts and progressively moving
+                towards advanced applications and industry insights. Each module built upon the last, creating a robust
+                and interconnected understanding of the modern space technology ecosystem.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 text-center">
+                    <span class="text-4xl font-bold text-orange-600">5</span>
+                    <p class="mt-2 text-slate-600 font-medium">Core Technology Modules</p>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 text-center">
+                    <span class="text-4xl font-bold text-orange-600">3</span>
+                    <p class="mt-2 text-slate-600 font-medium">Hands-On Workshops</p>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 text-center">
+                    <span class="text-4xl font-bold text-orange-600">1</span>
+                    <p class="mt-2 text-slate-600 font-medium">End-to-End Team Project</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Module 1 -->
+        <section id="module-1" class="py-10 border-t border-slate-200 mt-10 print-section">
+            <h2 class="text-3xl font-bold text-slate-900">2. Module 1: Advanced Drone Technology</h2>
+            <p class="mt-2 text-lg text-slate-600 mb-8">A foundational exploration of Unmanned Aerial Vehicles (UAVs),
+                from physical assembly and electronic integration to the complexities of autonomous programming.</p>
+
+            <div class="space-y-8">
+                <div>
+                    <h3 class="font-bold text-xl mb-4">Hands-on Mechanical Assembly</h3>
+                    <p class="text-slate-600 mb-4">The module began with an immersive hands-on workshop to build a
+                        quadcopter from a kit. This provided a practical, tactile understanding of the core components
+                        and their intricate interplay, moving beyond textbook diagrams.</p>
+                    <ul class="space-y-3 list-disc list-inside">
+                        <li><strong class="font-semibold text-slate-800">Frame & Motors:</strong> Assembled a carbon
+                            fiber frame, understanding the trade-offs between weight, strength, and vibration damping.
+                            Mounted and secured brushless DC motors, ensuring proper alignment.</li>
+                        <li><strong class="font-semibold text-slate-800">Electronics Integration:</strong> Carefully
+                            wired the Electronic Speed Controllers (ESCs), Power Distribution Board, and the Flight
+                            Controller, learning the importance of clean soldering, heat shrinking, and secure
+                            connections to prevent in-flight failures.</li>
+                        <li><strong class="font-semibold text-slate-800">Calibration & Setup:</strong> Performed crucial
+                            calibration of the ESCs and configured the flight controller software (e.g., Betaflight), a
+                            vital step to ensure the drone interprets commands correctly for stable flight.</li>
+                        <li><strong class="font-semibold text-slate-800">Propulsion Dynamics:</strong> Learned about
+                            LiPo battery safety protocols, C-ratings (discharge capacity), and the physics of propeller
+                            design based on Blade Element Momentum Theory, understanding how pitch and diameter affect
+                            thrust and efficiency.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-xl mb-4">Autonomous Navigation Concepts</h3>
+                    <p class="text-slate-600 mb-4">We then transitioned from hardware to software, exploring the complex
+                        algorithms and programming frameworks that enable intelligent, autonomous flight without direct
+                        human control.</p>
+                    <ul class="space-y-3 list-disc list-inside">
+                        <li><strong class="font-semibold text-slate-800">Sensor Fusion:</strong> Delved into how the
+                            flight controller fuses data from the Inertial Measurement Unit (IMU - accelerometer and
+                            gyroscope), GPS, and barometers using algorithms like Kalman filters to achieve an accurate
+                            and reliable estimation of its position and orientation, even with noisy sensor data.</li>
+                        <li><strong class="font-semibold text-slate-800">PID Control Theory:</strong> Learned the theory
+                            behind tuning Proportional-Integral-Derivative (PID) controllers, understanding how each
+                            gain (P, I, D) affects the drone's response to disturbances for crisp, stable flight without
+                            oscillation.</li>
+                        <li><strong class="font-semibold text-slate-800">Path Planning Algorithms:</strong> Studied key
+                            algorithms like Dijkstra's, A*, and RRT for navigating complex environments, understanding
+                            their computational costs, benefits, and suitability for different scenarios (e.g., known
+                            maps vs. unknown terrain).</li>
+                        <li><strong class="font-semibold text-slate-800">Programming Implementation:</strong> Explored
+                            how these concepts are implemented using high-level languages like Python with frameworks
+                            such as the Robot Operating System (ROS) for modular and scalable drone applications.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Module 2 -->
+        <section id="module-2" class="py-10 border-t border-slate-200 mt-10 print-section">
+            <h2 class="text-3xl font-bold text-slate-900">3. Module 2: CanSat & CubeSat Development</h2>
+            <p class="mt-2 text-lg text-slate-600 mb-8">A simulated end-to-end satellite mission, providing deep insight
+                into professional engineering lifecycles, systems engineering, and collaborative project management.</p>
+
+            <div class="bg-slate-50 p-8 rounded-xl border border-slate-200">
+                <h3 class="font-bold text-xl mb-2">Team Project: "Project VAYU"</h3>
+                <p class="text-slate-600 mb-6">Our team was tasked with designing, building, and testing a CanSat to
+                    measure atmospheric data during descent. This project was a masterclass in systems thinking,
+                    collaborative problem-solving, and the iterative design process essential for any engineering
+                    project.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="font-semibold text-slate-800 mb-3">Mission Details</h4>
+                        <ul class="space-y-3 text-slate-600 list-disc list-inside">
+                            <li><strong>Objective:</strong> Measure temperature, pressure, and humidity during descent
+                                to gather a high-resolution atmospheric profile for local weather modeling, and transmit
+                                it to a ground station.</li>
+                            <li><strong>My Role:</strong> Responsible for the Payload (BME280 sensor) and Communications
+                                (LoRa radio) subsystems. This included writing the driver code for the sensor,
+                                integrating it with the microcontroller, and developing the data packetization protocol
+                                for transmission.</li>
+                            <li><strong>Key Challenge:</strong> Managing the high instantaneous current draw from the
+                                radio's transmission bursts, which caused voltage drops across the system and led to
+                                intermittent resets of our microcontroller.</li>
+                            <li><strong>Solution:</strong> We implemented a two-fold solution: adding decoupling
+                                capacitors to the power circuit to provide a local reservoir of charge, and optimizing
+                                the software to enter a deep-sleep state between readings to conserve overall energy.
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-slate-800 mb-3 text-center">Conceptual Subsystem Focus</h4>
+                        <div class="chart-container">
+                            <canvas id="cansatChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Module 3 -->
+        <section id="module-3" class="py-10 border-t border-slate-200 mt-10 print-section">
+            <h2 class="text-3xl font-bold text-slate-900">4. Module 3: Rocketry and Launch Vehicle Dynamics</h2>
+            <p class="mt-2 text-lg text-slate-600 mb-8">An introduction to the fundamental challenge of space
+                exploration: developing the immense thrust required to overcome Earth's gravity and achieve orbit.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="font-bold text-xl mb-4">Fundamentals of Rocket Science</h3>
+                    <ul class="space-y-3 list-disc list-inside">
+                        <li><strong class="font-semibold text-slate-800">Tsiolkovsky Rocket Equation:</strong> Studied
+                            the core relationship between a rocket's mass ratio, its engine's exhaust velocity (Specific
+                            Impulse or Isp), and its total change in velocity (delta-v). This gave a clear intuition for
+                            why multistage rockets are necessary for orbital missions.</li>
+                        <li><strong class="font-semibold text-slate-800">Propulsion Systems:</strong> Compared the
+                            characteristics of solid propellant engines (high thrust, simple, reliable) and liquid
+                            propellant engines (higher efficiency, throttling, restart capability), understanding their
+                            use cases in different launch stages.</li>
+                        <li><strong class="font-semibold text-slate-800">Aerodynamic Stability:</strong> Learned that
+                            the Center of Pressure (the net point of aerodynamic forces) must be located behind the
+                            Center of Gravity to ensure the rocket flies straight and does not tumble, a key principle
+                            in rocket design.</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
+                    <h3 class="font-bold text-xl mb-4">Model Rocketry Workshop</h3>
+                    <p class="text-slate-600">The highlight was building and launching a model rocket using standard
+                        Estes engines. Before launch, we used simulation software like OpenRocket to predict the flight
+                        path, apogee, and verify stability. The successful launch and parachute recovery was a powerful
+                        lesson in precision, safety protocols, and the physics of flight, turning abstract equations
+                        into a tangible, thrilling event.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Module 4 -->
+        <section id="module-4" class="py-10 border-t border-slate-200 mt-10 print-section">
+            <h2 class="text-3xl font-bold text-slate-900">5. Module 4: Remote Sensing & GIS Applications</h2>
+            <p class="mt-2 text-lg text-slate-600 mb-8">Demonstrating how data from space can be processed, analyzed,
+                and visualized to solve critical real-world problems on Earth.</p>
+
+            <div class="bg-slate-50 p-8 rounded-xl border border-slate-200">
+                <h3 class="font-bold text-xl mb-2">Case Study: Urban Heat Island Analysis</h3>
+                <p class="text-slate-600 mb-6">We used open-source GIS software (QGIS) and Landsat 8 satellite data from
+                    the USGS EarthExplorer portal to analyze the Urban Heat Island (UHI) effect in a major Indian city.
+                    This involved processing raw thermal and multispectral imagery to derive actionable environmental
+                    insights.</p>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h4 class="font-semibold text-slate-800 mb-3">Methodology & Findings</h4>
+                        <ul class="space-y-3 text-slate-600 list-disc list-inside">
+                            <li><strong>LST Calculation:</strong> Processed the satellite's thermal band data, applying
+                                atmospheric corrections to create an accurate Land Surface Temperature map, showing hot
+                                and cool spots across the city.</li>
+                            <li><strong>NDVI Calculation:</strong> Used the red and near-infrared bands to calculate the
+                                Normalized Difference Vegetation Index, creating a map showing the density and health of
+                                green cover.</li>
+                            <li><strong>Outcome:</strong> By spatially comparing the two maps, we established a clear
+                                and strong inverse correlation: areas with less vegetation (dense urban cores,
+                                industrial areas) had significantly higher surface temperatures. This demonstrates how
+                                remote sensing can provide critical data for urban planners to design cooler, more
+                                sustainable cities.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-slate-800 mb-3 text-center">Conceptual Data Correlation</h4>
+                        <div class="chart-container">
+                            <canvas id="gisChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Module 5 -->
+        <section id="module-5" class="py-10 border-t border-slate-200 mt-10 print-section">
+            <h2 class="text-3xl font-bold text-slate-900">6. Module 5: The New Space Economy & Entrepreneurship</h2>
+            <p class="mt-2 text-lg text-slate-600 mb-8">Contextualizing our technical training within the broader
+                landscape of the global and Indian space industry, focusing on emerging commercial opportunities.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="font-bold text-xl mb-4">India's Growing Space Ecosystem</h3>
+                    <p class="text-slate-600">We studied the paradigm shift in India's space sector, driven by policy
+                        reforms and the establishment of IN-SPACe as a single-window agency to empower private entities.
+                        We discussed the symbiotic relationship between the legacy expertise of ISRO and the agility of
+                        a new wave of private startups like Skyroot Aerospace and Pixxel.</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-xl mb-4">Career Pathways in New Space</h3>
+                    <p class="text-slate-600">Explored diverse career roles beyond traditional engineering, including
+                        Data Science for analyzing satellite imagery, Robotics and AI for autonomous rovers, Systems
+                        Engineering for managing mission complexity, and even specialized fields like Business
+                        Development and international Space Law.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Conclusion -->
+        <section id="conclusion" class="py-10 border-t border-slate-200 mt-10 print-section">
+            <h2 class="text-3xl font-bold text-slate-900">7. Conclusion & Future Aspirations</h2>
+            <p class="mt-2 text-lg text-slate-600 mb-8">A synthesis of the skills acquired during this intensive program
+                and a look towards future professional and academic goals shaped by this experience.</p>
+
+            <div>
+                <h3 class="font-bold text-xl mb-4">Synthesis of Skills</h3>
+                <p class="text-slate-600 mb-6">The internship provided a unique blend of skills directly applicable to
+                    the modern aerospace industry:</p>
+                <ul class="list-disc list-inside space-y-2 text-slate-600">
+                    <li><strong class="font-semibold text-slate-700">Technical Competencies:</strong> Gained tangible,
+                        hands-on skills in drone assembly, satellite subsystem integration, model rocketry, and GIS data
+                        analysis, moving these concepts from abstract theory to applied practice.</li>
+                    <li><strong class="font-semibold text-slate-700">Project Management & Teamwork:</strong> Learned to
+                        work effectively within a team to a deadline, manage project requirements, and follow a
+                        structured engineering lifecycle via the CanSat project, including conducting design reviews.
+                    </li>
+                    <li><strong class="font-semibold text-slate-700">Systematic Problem-Solving:</strong> Was constantly
+                        challenged to think critically and find innovative solutions, from debugging code for our
+                        satellite's radio to optimizing its power budget and tracing hardware faults through a logical
+                        process of elimination.</li>
+                    <li><strong class="font-semibold text-slate-700">Entrepreneurial Mindset:</strong> The program
+                        instilled the importance of asking not just "How can we build this?" but also "Why should we
+                        build this?", "Who is the customer?", and "What real-world problem does this solve?".</li>
+                </ul>
+
+                <hr class="my-8 border-slate-200">
+
+                <h3 class="font-bold text-xl mb-4">Future Plans</h3>
+                <p class="text-slate-600">This internship has solidified my resolve to pursue a career in the space
+                    technology sector. The experience has given me the confidence and clarity to focus my future
+                    academic and professional efforts, particularly in the promising fields of small satellite
+                    development for Earth observation and autonomous systems for space exploration. I intend to leverage
+                    the knowledge gained here in my final year project, focusing on a related topic, and will actively
+                    seek opportunities that allow me to contribute to India's exciting journey in space. I am immensely
+                    grateful to India Space Lab for providing the launchpad for these aspirations.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Chart.js CanSat Chart
+            const cansatCtx = document.getElementById('cansatChart').getContext('2d');
+            new Chart(cansatCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Payload', 'Comms', 'Power', 'Structure', 'OBC'],
+                    datasets: [{
+                        label: 'Effort/Focus Area',
+                        data: [35, 30, 20, 10, 5],
+                        backgroundColor: [
+                            'rgba(234, 88, 12, 0.6)',
+                            'rgba(251, 146, 60, 0.6)',
+                            'rgba(253, 186, 116, 0.6)',
+                            'rgba(254, 215, 170, 0.6)',
+                            'rgba(255, 237, 213, 0.6)',
+                        ],
+                        borderColor: [
+                            'rgba(234, 88, 12, 1)',
+                            'rgba(251, 146, 60, 1)',
+                            'rgba(253, 186, 116, 1)',
+                            'rgba(254, 215, 170, 1)',
+                            'rgba(255, 237, 213, 1)',
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        title: { display: true, text: 'Conceptual Focus on Project VAYU Subsystems' }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'Relative Effort (%)' }
+                        }
+                    }
+                }
+            });
+
+            // Chart.js GIS Chart
+            const gisCtx = document.getElementById('gisChart').getContext('2d');
+            new Chart(gisCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Dense Urban', 'Industrial', 'Suburban', 'Park/Green Space'],
+                    datasets: [{
+                        label: 'Land Surface Temp (°C)',
+                        data: [45, 42, 35, 28],
+                        backgroundColor: 'rgba(239, 68, 68, 0.6)',
+                        borderColor: 'rgba(239, 68, 68, 1)',
+                        borderWidth: 1,
+                        yAxisID: 'y'
+                    }, {
+                        label: 'Vegetation Index (NDVI)',
+                        data: [0.1, 0.2, 0.5, 0.8],
+                        backgroundColor: 'rgba(34, 197, 94, 0.6)',
+                        borderColor: 'rgba(34, 197, 94, 1)',
+                        borderWidth: 1,
+                        yAxisID: 'y1'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: { display: true, text: 'Inverse Correlation: Temperature vs. Vegetation' }
+                    },
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: { display: true, text: 'Temperature (°C)' }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: { display: true, text: 'NDVI (Greenness)' },
+                            grid: { drawOnChartArea: false }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
